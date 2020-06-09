@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{# 页面标题 #}
+{% block title %}
+编辑收藏夹
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+<div class="container">
+	<div class="row">
+		<div class="col-xs-10 col-sm-8 col-xs-offset-1 col-sm-offset-2">
+			<form action="" method="POST">
+				{% csrf_token %}
+				<div class="input-group" style="width:100%;">
+					<label for="id_star">收藏夹</label>
+					<input type="text" name="star" value="{{star.name}}" required placeholder="请输入收藏夹名称" maxlength="50" id="id_star" class="form-control" />
+				  <div>
+					<label for="id_brief">摘要</label>
+					<div class="form-group">
+						<textarea id="id_brief" name="brief" class="form-control" rows="10" placeholder="请在此处介绍一下收藏夹">{{star.brief}}</textarea>
+					</div>
+				  </div>
+				</div>
+				<br>
+				<input type="submit" value="保存" class="btn btn-primary pull-right">
+			</form>
+		</div>
+	</div>
+</div>
+{% endblock %}

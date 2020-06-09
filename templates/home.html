@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{# 页面标题 #}
+{% block title %}
+博客网站|首页
+{% endblock %}
+
+{% block nav_home_active %}
+active
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+	<div class="container " >
+			<div class="row">
+			<div class="col-md-10  col-md-offset-2" >
+				<div class="col-md-5" >
+					<div id="Slogan">
+				<h1 >创造<br>
+					你的文字</h1>
+				<p>这里是一个完全免费的小众博客网站，为您提供简洁快速的功能，希望您能在此记录技术、生活、思想以及未来</p>
+					</div>
+				</div>
+				<div class="col-md-5" >
+					{% if user.is_authenticated %}
+					<div id="Slogan">
+						<h1>Welcome，<br>{{user}}</h1>
+						<p>Life is like summer flowers, death is like autumn leaves.</p>
+						<p>生如夏花之绚烂，死如秋叶之静美。</p><hr>
+						<p>In this short life, we will eventually lose.	You may as well be bold to love someone,to climb a mountain,to chase your dream.</p>
+						<p>这短短的一生，我们最终都会失去。你不妨大胆一些，爱一个人，攀一座山，追一个梦。</p><hr>
+						<p>Just walk over and don't linger to gather flowers to keep them, because flowers will keep opening all the way.</p>												
+						<p>尽管走下去，不必逗留着去采鲜花来保存，因为在这一路上，花自然会继续开放。</p>
+					</div>
+					{% else %}
+					<form action="" method="POST">						
+					<div id="login-home">						
+						{% csrf_token %}
+						{#login_form#}
+						{% for field in login_form %}
+						{{field}}
+						<!--p class="text-danger">{{field.erros.as_text}}</p-->
+						{% endfor %}
+						<div class="text-danger">{{login_form.non_field_errors}}</div>
+						<a href="{% url 'forget' %}" id="forget" >忘记密码</a>
+						<a href="{% url 'register' %}" id="register">注册</a>
+						<button class="btn" id="btn-login"type="submit">登 录</button>
+					</div>
+					</form>
+					{% endif %}
+				</div>			
+			</div>			
+		</div>							
+	</div>
+	<link rel="stylesheet" href="/static/home.css">
+{% endblock %}

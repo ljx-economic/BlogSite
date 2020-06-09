@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{# 页面标题 #}
+{% block title %}
+添加博客到收藏夹
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+<div class="col-sm-6 col-sm-offset-3">
+	<div>
+		<h2>添加收藏</h2>
+		<a href="{% url 'star_add' %}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus">新建收藏夹</span></a>
+	</div>
+	<br><br><br>
+	<ul class="list-group">
+		{% for star in my_stars %}
+		<li class="list-group-item">
+			<form action="" method="POST">
+				{% csrf_token %}
+				<h4><strong>{{star.name}}</strong></h4>
+				<p>{{star.last_update_time|date:"Y.m.d H:i"}}更新 • {{star.blog_count}}条内容
+				<input type="hidden" name="star_id" value="{{star.id}}"/>
+				<input type="submit" value="收藏" class="btn btn-primary pull-right"></p>
+			</form>
+		</li>
+		{% empty %}
+		<h4>您暂时没有收藏夹，请前去创建哦...</h4>
+		{% endfor %}
+	</ul>
+	<p>{{count}}个收藏夹</p><br><br>
+</div>
+{% endblock %}

@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{# 页面标题 #}
+{% block title %}
+收藏夹：{{ star.name }}
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+	<link rel="stylesheet" href="/static/blog/blog_list.css">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-9 col-lg-9">
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<h3><strong>{{ star.name }}</strong></h3>
+						<p>创建于{{star.created_time|date:"Y.m.d H:i"}} • {{page_of_blogs.paginator.count}}条内容</p>
+						<p>
+							<a href="{% url 'star_change' star.id %}"><span class="glyphicon glyphicon-pencil">编辑</span></a>
+							<a href="{% url 'star_delete' star.id %}"><span class="glyphicon glyphicon-trash">删除</span></a>
+						</p>
+					</div>
+					<div class="panel-body">
+						{% for blog in page_of_blogs.object_list %}
+						<div class="blog">
+						<h3 class="text-center"><a href="/blog/articles/{{blog.id}}">{{blog.title}}</a></h3>
+						<!-- <p class="blog-info">
+							<span class="glyphicon glyphicon-tag" aria-hidden="true">
+								<a href="/blog/type/{{blog.blog_type.pk}}">{{blog.blog_type}}</a>
+							</span>
+							<span class="glyphicon glyphicon-user" aria-hidden="true">
+								<a href="{% url 'blog_list' blog.author %}">{{blog.author}}</a>
+							</span>
+							<span class="glyphicon glyphicon-time" aria-hidden="true">
+								{{blog.created_time|date:"Y-m-d"}}
+							</span>
+							&nbsp;&nbsp;<span>阅读({{blog.readnum_function}})</span>
+						</p> -->
+						<ul class="blog-info-discription">
+							<li>作者 <a href="{% url 'blog_list' blog.author %}">{{blog.author}}</a></li>
+							<li>分类于 <a href="/blog/type/{{blog.blog_type.pk}}">{{blog.blog_type}}</a></li>
+							<!--p>发表日期：{{blog.created_time|date:"Y-m-d G:i:s"}}</p-->
+							<li>{{blog.created_time|date:"Y.m.d H:i"}}</li>
+							<!--<li>最近修改日期：{{blog.last_update_time}}</li>-->
+							<li>阅读({{blog.readnum_function}})</li>
+						</ul>
+						<p>{{blog.content|striptags|truncatechars:80}}</p>
+						</div>
+						{% empty %}
+						<div class="blog">
+							<h3>暂无收藏的博客......</h3>
+						</div>
+						{% endfor %}
+						
+					</div>
+					<hr>
+					<nav aria-label="Page navigation" class="text-center"><!--分页器-->
+					  <ul class="pagination">
+						<li>
+						{# 上一页 #}
+						{%if page_of_blogs.has_previous %}
+						  <a href="?page={{page_of_blogs.previous_page_number}}" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+						  </a>
+						{% else %}
+						{% endif %}
+						</li>
+						{# 全部页码 #}
+						{% for page_num in page_of_blogs.paginator.page_range %}
+							{% if page_num == page_of_blogs.number %}
+							<li class="active"><span>{{page_num}}</span></li>
+							{% else %}
+							<li><a href="?page={{page_num}}">{{page_num}}</a></li>
+							{% endif %}
+						{% endfor %}
+						<li>
+						{# 下一页 #}
+						{%if page_of_blogs.has_next %}
+						  <a href="?page={{page_of_blogs.next_page_number}}" aria-label="Next">
+							<span aria-hidden="true">&raquo;</span>
+						  </a>
+						{% else %}
+						{% endif %}
+						</li>
+					  </ul>
+					</nav>
+				</div>	
+				
+			</div>
+			<div class="col-sm-3 col-lg-3">
+				<div class="panel panel-default" >
+					<div class="panel-heading"><h4 class="text-center">我的收藏夹</h4></div>
+					<div class="panel-body">
+						<ul class="blog-types">
+						{% for each_star in my_stars %}
+						<li>
+							<h5><a href="{% url 'star_blog_list' each_star.id %}"><strong>{{each_star.name}}</strong></a></h5>
+							<p>{{each_star.last_update_time|date:"Y.m.d H:i"}}更新 • {{each_star.blog_count}}条内容</p>
+						</li><hr>
+						{% empty %}
+						<li>暂无收藏夹</li>
+						{% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}

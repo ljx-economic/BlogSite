@@ -1,0 +1,52 @@
+	body{
+		margin-top:70px!important;
+		background-color: rgb(241,241,241);
+	}
+	
+	#Slogan{
+		padding-top:50px;
+		color: black;				
+	}
+	#Slogan h1{
+		margin-top: 0px;
+		font-size: 50px;
+		font-weight: 500;
+		margin-bottom: 16px!important;
+		text-align: left;
+		
+	}
+	#login-home{
+		width: 300px;
+		height: 260px;
+		
+		padding: 50px 0px;
+	}
+	#login-home input{
+		width: 300px;
+		height: 40px;
+		margin-bottom: 20px;
+		display: block;
+	}
+	#btn-login{
+		color: aliceblue;
+		font-size: 18px;
+		line-height: 22px;
+		padding: 8px 26px;
+		margin-top: 50px;
+		font-weight: 500;
+		background-color: #fe7300;
+		border: none;
+		width: 300px;
+		position: absolute;
+		bottom: 0px;		
+	}
+	#forget,#register{
+		float: right;		
+		margin-right: 1em;	
+		color: #fe7300;
+		text-decoration:underline;
+			
+	}
+	#forget{
+		margin-right: 0;	
+	}

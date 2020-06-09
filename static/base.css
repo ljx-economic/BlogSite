@@ -1,0 +1,111 @@
+	*{
+		margin:0;
+		padding:0;
+		font-family:"微软雅黑";
+	}
+	html,body{
+		height: 100%;
+	}
+	body{	
+		margin-top:70px!important;
+		background-color: rgb(241,241,241);
+	}
+
+	#bar{
+		margin-bottom: 100px!important;
+		background-color: rgb(43	,49,55);
+	}
+	#bar a{
+		color:white;
+	}
+	#bar a:hover{
+		color:rgb(226,216,216);
+		
+	}
+	.sreachbox.form-group.form-control{
+		 padding: 0px 6px;
+		
+	}
+
+	.search-form button[type="submit"]{
+		background: none;
+		border: none;
+		margin-left: -3em;
+		color: #aaa;
+	}
+	.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover ,.navbar-default .navbar-nav>.open>a:hover{
+		color: #555;
+		background-color: black;
+	 }
+	 .navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover
+	 {color: #555;
+		background-color: black;
+	 }
+	 .dropdown.open,.dropdown-menu,.dropdown-menu->li:hover
+	 {
+		background-color: rgb(43	,49,55);
+	 }
+	
+	/*blog list*/
+	.h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
+		font-family: inherit;
+		font-weight: 500;
+		line-height: 1.1;
+		color: inherit;
+		
+	 }
+	 .blog{
+		 padding: 20px;
+	 }
+	 .blog h3{
+		font-weight: 700;
+	}
+	 .blog-types li{
+		text-align: center;
+	}
+	 .blog-types li a{
+		
+		 color: rgb(80,80,80);
+	 }
+	 a{
+		 color: black;
+		 
+	 }
+	 .blog-info-discription a,.comment a,#blog-div a,.blog-types a{
+		text-decoration:underline;
+	}
+	.blog-content{
+		background-color: #fff;
+		
+	}
+
+	.blog-info-discription{
+		text-align: center;
+	}
+	.blog-info-discription li{
+		color: rgb(128,128,128);
+		font-size:12px;
+		margin-left: 30px;
+		
+	
+	}
+	
+	.blog p{
+		margin: 40px;
+		color: rgb(128,128,128);
+	}
+	.dropdown-menu>li>a:hover{
+		background-color: rgb(43 ,49,55);
+	 }
+	 #blog-list-usr-menu{
+		 margin-top: 60px;
+	 }
+	 #blog-list-usr-menu span{
+		margin:0 10px ;
+		text-decoration: underline;
+	}
+
+	#blog-div h3{
+		font-weight: 700;
+	}
+	

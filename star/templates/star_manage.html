@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{# 页面标题 #}
+{% block title %}
+我的收藏
+{% endblock %}
+
+{# 页面内容 #}
+{% block content %}
+<div class="col-sm-10 col-sm-offset-1">
+	<div>
+		<h2>收藏管理</h2>
+		<a href="{% url 'star_add' %}" class="btn btn-primary pull-right"><span class="glyphicon glyphicon-plus">新建收藏夹</span></a>
+	</div>
+	<form method="post">
+		{% csrf_token %}
+		<div class="results">
+			<table class="table table-striped">
+			<thead>
+			<tr>
+				<th><div class="text">收藏夹</div></th>
+				<th><div class="text">用户</div></th>
+				<th><div class="text">摘要</div></th>
+				<th><div class="text">收藏博客数量</div></th>
+				<th><div class="text">创建时间</div></th>
+				<th><div class="text">上次更新时间</div></th>
+				<th><div class="text">操作</div></th>
+			</tr>
+			</thead>
+			
+			<tbody>
+			{% for star in my_stars %}
+			<tr>
+				<th><a href="{% url 'star_blog_list' star.id %}">{{star.name}}</a></th>
+				<td>{{star.user}}</td>
+				<td>{{star.brief}}</td>
+				<td>{{star.blog_count}}条内容</td>
+				<td>{{star.created_time}}</td>
+				<td>{{star.last_update_time}}</td>
+				<td>
+					<a href="{% url 'star_change' star.id %}" class="pull-left"><span class="glyphicon glyphicon-pencil" aria-hidden="true">编辑</span></a>
+					<a href="{% url 'star_delete' star.id %}" class="pull-right"><span class="glyphicon glyphicon-trash" aria-hidden="true">删除</span></a>
+				</td>
+			</tr>
+			{% empty %}
+				<td>暂无信息</td>
+				<td>暂无信息</td>
+				<td>暂无信息</td>
+				<td>暂无信息</td>
+				<td>暂无信息</td>
+				<td>暂无信息</td>
+				<td>暂无信息</td>
+			{% endfor %}
+			</tbody>
+			</table>
+		</div>
+	</form>
+	<p>{{count}}个收藏夹</p><br><br>
+</div>
+{% endblock %}
