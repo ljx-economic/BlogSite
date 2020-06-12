@@ -16,7 +16,7 @@ class BlogType(models.Model):
         
 class Blog(models.Model):
     title=models.CharField(max_length=150,verbose_name='标题')
-    blog_type=models.ForeignKey(BlogType,on_delete=models.DO_NOTHING,verbose_name='博客类型')
+    blog_type=models.ForeignKey(BlogType,on_delete=models.CASCADE,verbose_name='博客类型')
     # content=models.TextField(verbose_name='博客内容')
     # content=RichTextField()
     content=RichTextUploadingField()
